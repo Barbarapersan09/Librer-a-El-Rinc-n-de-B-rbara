@@ -1,3 +1,0 @@
-
-INSERT INTO autores (idAutor, Nombre, Apellido, Edad, Nacionalidad,Biografia)
-VALUES ('1','Alex', 'Mírez',25,'Venezolana','Alex Mírez, venezolana de veinticinco años que un día descubrió Wattpad y a partir de ahí no paró de escribir historias. Admite que su vida dio un giro inesperado por todos los lectores que ha reunido en la plataforma. Está graduada en Servicios Turísticos, pero actualmente se dedica a la escritura, luchar contra una oleada de ideas y leer todos los libros posibles. Es cinéfila, gamer y defiende que todos en la vida cometemos que errores que vale la pena contar para no volver a repetir.');
