@@ -6,16 +6,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/El Rincón de Bárbara.png">
+    <link rel="apple-touch-icon" href="./assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="./assets/img/El Rincón de Bárbara.png">
 
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/templatemo.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/templatemo.css">
+    <link rel="stylesheet" href="./assets/css/custom.css">
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./assets/css/fontawesome.min.css">
 <!--
     
 TemplateMo 559 Zay Shop
@@ -52,7 +52,7 @@ https://templatemo.com/tm-559-zay-shop
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+            <a class="navbar-brand text-success logo h1 align-self-center" href="./index.php">
                 <img class="logo" src="assets/img/El Rincón de Bárbara.png" alt="">
             </a>
 
@@ -64,16 +64,16 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Inicio</a>
+                            <a class="nav-link" href="index.php">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Catalogo.html">Catálogo</a>
+                            <a class="nav-link" href="./Vistas/Catalogo.html">Catálogo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="autores.html">Autores</a>
+                            <a class="nav-link" href="./Vistas/autores.html">Autores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contacto</a>
+                            <a class="nav-link" href="./Vistas/contact.html">Contacto</a>
                         </li>
                     </ul>
                 </div>
@@ -93,9 +93,9 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="./Vistas/LoginView.php">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark" ></span>
                     </a>
                 </div>
             </div>
@@ -112,7 +112,7 @@ https://templatemo.com/tm-559-zay-shop
             </div>
             <form action="" method="get" class="modal-content modal-body border-0 p-0">
                 <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Buscar ...">
                     <button type="submit" class="input-group-text bg-success text-light">
                         <i class="fa fa-fw fa-search text-white"></i>
                     </button>
@@ -120,6 +120,7 @@ https://templatemo.com/tm-559-zay-shop
             </form>
         </div>
     </div>
+
 
     <!-- Start Banner Hero / Carrusel  -->
     <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
@@ -180,17 +181,17 @@ https://templatemo.com/tm-559-zay-shop
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/Icono libro.png" class="rounded-circle img-fluid border"></a>
                 <h5 class="text-center mt-3 mb-3"></h5>
-                <p class="text-center"><a class="btn btn-success">Catálogo</a></p>
+                <p class="text-center"><a class="btn btn-success" href="./Vistas/Catalogo.html">Catálogo</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/Icono colecciones.png" class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3"></h2>
-                <p class="text-center"><a class="btn btn-success">Colecciones</a></p>
+                <p class="text-center"><a class="btn btn-success" href="./Vistas/Colecciones.html">Colecciones</a></p>
             </div>
             <div class="col-12 col-md-4 p-5 mt-3">
                 <a href="#"><img src="./assets/img/Autores.png" class="rounded-circle img-fluid border"></a>
                 <h2 class="h5 text-center mt-3 mb-3"></h2>
-                <p class="text-center"><a class="btn btn-success">Editores</a></p>
+                <p class="text-center"><a class="btn btn-success" href="./Vistas/autores.html">Autores</a></p>
             </div>
         </div>
     </section>
@@ -293,7 +294,9 @@ https://templatemo.com/tm-559-zay-shop
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">El Rincón de Bárbara</h2>
+                    <a class="navbar-brand text-success logo h1 align-self-center" href="./index.php">
+                        <img class="logo" src="assets/img/El Rincón de Bárbara.png" alt="">
+                    </a>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fas fa-map-marker-alt fa-fw"></i>
@@ -312,23 +315,23 @@ https://templatemo.com/tm-559-zay-shop
 
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Nuestras Editoriales</h2>
-                    <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="#">Alfaguara</a></li>
-                        <li><a class="text-decoration-none" href="#">Bolsillo</a></li>
-                        <li><a class="text-decoration-none" href="#">Montena</a></li>
-                        <li><a class="text-decoration-none" href="#">Salamandra</a></li>
-                        <li><a class="text-decoration-none" href="#">Suma</a></li>
-                        <li><a class="text-decoration-none" href="#">Lumen</a></li>
+                    <ul class="list-unstyled text-white footer-link-list">
+                        <li class="text-decoration-none">Alfaguara</li>
+                        <li class="text-decoration-none">Bolsillo</li>
+                        <li class="text-decoration-none">Montena</li>
+                        <li class="text-decoration-none">Salamandra</li>
+                        <li class="text-decoration-none">Suma</li>
+                        <li class="text-decoration-none">Lumen</li>
                     </ul>
                 </div>
 
                 <div class="col-md-4 pt-5">
                     <h2 class="h2 text-light border-bottom pb-3 border-light">Menú</h2>
                     <ul class="list-unstyled text-light footer-link-list">
-                        <li><a class="text-decoration-none" href="index.html">Inicio</a></li>
-                        <li><a class="text-decoration-none" href="Catalogo.html">Catálogo</a></li>
-                        <li><a class="text-decoration-none" href="autores.html">Autores</a></li>
-                        <li><a class="text-decoration-none" href="contact.html">Contacto</a></li>
+                        <li><a class="text-decoration-none" href="./index.php">Inicio</a></li>
+                        <li><a class="text-decoration-none" href="./Vistas/Catalogo.html">Catálogo</a></li>
+                        <li><a class="text-decoration-none" href="./Vistas/autores.html">Autores</a></li>
+                        <li><a class="text-decoration-none" href="./Vistas/contact.html">Contacto</a></li>
                     </ul>
                 </div>
 
@@ -363,8 +366,8 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                            Copyright &copy; 2021 Company Name 
-                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                            Copyright &copy; 2021 El Rincón de Bárbara 
+                            | Designed by Bárbara Pérez Santiago
                         </p>
                     </div>
                 </div>
@@ -375,11 +378,11 @@ https://templatemo.com/tm-559-zay-shop
     <!-- End Footer -->
 
     <!-- Start Script -->
-    <script src="assets/js/jquery-1.11.0.min.js"></script>
-    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/templatemo.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="../assets/js/jquery-1.11.0.min.js"></script>
+    <script src="../assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/templatemo.js"></script>
+    <script src="../assets/js/custom.js"></script>
     <!-- End Script -->
 </body>
 
