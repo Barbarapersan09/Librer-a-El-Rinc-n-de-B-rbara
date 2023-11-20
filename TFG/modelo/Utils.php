@@ -76,24 +76,24 @@ class Utils
    //Funcion que envia el correo de registro
    public static function correo_registro($usuario, $conPDO)
    {
-      $to = $usuario["email"];
+      $to = $usuario["Email"];
       $subject = "Confirma tu Cuenta";
 
-      $message = "<b>Bienvenido a esta Web " . $usuario["nombre"] . "</b>";
+      $message = "<b>Bienvenido a esta Web " . $usuario["Nombre"] . "</b>";
      
       // COMO CON MI BASE DE DATOS NO ME DEJA UTILIZAR OTRO CAMPO SOLO EL IDUSUARIO LO HE TENIDO QUE HACER ASI POR LA FUERZA.
 
       // Insertar el usuario en la base de datos
       try {
-         $sentencia = $conPDO->prepare("INSERT INTO biblioteca.usuarios (idusuarios, nombre, email, password,salt,cod_confirm) VALUES ( :idusuarios, :nombre, :email, :password,:salt,:cod_confirm)");
+         $sentencia = $conPDO->prepare("INSERT INTO biblioteca.usuarios (idUsuario, Nombre, Email, Password, Salt, codConfirm) VALUES ( :idUsuario, :Nombre, :Email, :Password, :Salt, :codConfirm)");
          
          //Asociamos los valores a los parametros de la sentencia sql
-         $sentencia->bindParam(":idusuarios", $usuario["idusuarios"]);
-         $sentencia->bindParam(":nombre", $usuario["nombre"]);
-         $sentencia->bindParam(":email", $usuario["email"]);
-         $sentencia->bindParam(":password", $usuario["password"]);
-         $sentencia->bindParam(":salt", $usuario["salt"]);
-         $sentencia->bindParam(":cod_confirm", $usuario["cod_confirm"]);
+         $sentencia->bindParam(":idUsuario", $usuario["idUsuario"]);
+         $sentencia->bindParam(":Nombre", $usuario["Nombre"]);
+         $sentencia->bindParam(":Email", $usuario["Email"]);
+         $sentencia->bindParam(":Password", $usuario["Password"]);
+         $sentencia->bindParam(":Salt", $usuario["Salt"]);
+         $sentencia->bindParam(":codConfirm", $usuario["codConfirm"]);
          $sentencia->execute();
 
          // Obtener el ID de usuario generado automáticamente
@@ -104,7 +104,7 @@ class Utils
          echo "Error al insertar el registro: " . $e->getMessage();
          return;
       }
-      $message .= "<h3>Tu código de activación es: " . $usuario["cod_confirm"] . "</h3>";
+      $message .= "<h3>Tu código de activación es: " . $usuario["codConfirm"] . "</h3>";
       
       $header = "From: bpersan834@g.educaand.es\r\n";
       $header .= "MIME-Version: 1.0\r\n";
@@ -122,9 +122,9 @@ class Utils
    public static function correo_cambiarPassword($email, $usuario)
    {
       // Configuración para enviar correo
-      $to = $usuario['email'];
+      $to = $usuario['Email'];
       $subject = 'Cambio de contraseña' . $email;
-      $message = 'Estimado ' . $usuario['nombre'] . ',<br><br>Tu contraseña ha sido cambiada exitosamente. <br>Atentamente,<br>El equipo de Biblioteca';
+      $message = 'Estimado ' . $usuario['Nombre'] . ',<br><br>Tu contraseña ha sido cambiada exitosamente. <br>Atentamente,<br>El equipo de Biblioteca';
       $headers = "From: bpersan834@g.educaand.es\r\n";
       $headers .= "Reply-To: bpersan834@g.educaand.es\r\n";
       $headers .= "Content-type: text/html\r\n";

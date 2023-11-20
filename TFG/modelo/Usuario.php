@@ -41,7 +41,7 @@ class Usuario
             if ($conPDO != null) {
                 try {
                     //Introducimos la sentencia a ejecutar con prepare statement
-                    $sentencia = $conPDO->prepare("SELECT * FROM biblioteca.usuarios where email = ?");
+                    $sentencia = $conPDO->prepare("SELECT * FROM biblioteca.usuarios where Email = ?");
 
                     // BindParam del email
                     $sentencia->bindParam(1, $email);
@@ -62,10 +62,10 @@ class Usuario
         if ($conPDO != null) {
             try {
                 // Preparamos la sentencia SQL con un parámetro de marcador de posición
-                $sentencia = $conPDO->prepare("SELECT * FROM biblioteca.usuarios WHERE idusuarios = :idusuarios");
+                $sentencia = $conPDO->prepare("SELECT * FROM biblioteca.usuarios WHERE idUsuario = :idUsuario");
 
                 // Asociamos el valor del parámetro a la variable $idusuarios
-                $sentencia->bindParam(":idusuarios", $idusuarios);
+                $sentencia->bindParam(":idUsuario", $idusuarios);
 
                 // Ejecutamos la sentencia
                 $sentencia->execute();
@@ -89,7 +89,7 @@ class Usuario
                 try {
                     //Primero introducimos la sentencia a ejecutar con prepare
                     //Ponemos en lugar de valores directamente, interrogaciones
-                    $sentencia = $conPDO->prepare("SELECT * FROM biblioteca.usuarios where idusuarios=?");
+                    $sentencia = $conPDO->prepare("SELECT * FROM biblioteca.usuarios where idUsuario=?");
                     //Asociamos a cada interrogacion el valor que queremos en su lugar
                     $sentencia->bindParam(1, $idUsuario);
                     //Ejecutamos la sentencia
@@ -113,15 +113,17 @@ class Usuario
 
             try {
                 //Preparamos la sentencia
-                $sentencia = $conPDO->prepare("INSERT INTO biblioteca.usuarios (idusuarios, nombre, email, password,salt,cod_confirm) VALUES ( :idusuarios, :nombre, :email, :password,:salt,:cod_confirm)");
+                $sentencia = $conPDO->prepare("INSERT INTO biblioteca.usuarios (idUsuario, Nombre, Email, Password, passConfirm, Salt, codConfirm) VALUES ( :idUsuario, :Nombre, :Email, :Password, :passConfirm, :Salt,:codConfirm)");
 
                 //Asociamos los valores a los parametros de la sentencia sql
-                $sentencia->bindParam(":idusuarios", $usuario["idusuarios"]);
-                $sentencia->bindParam(":nombre", $usuario["nombre"]);
-                $sentencia->bindParam(":email", $usuario["email"]);
-                $sentencia->bindParam(":password", $usuario["password"]);
-                $sentencia->bindParam(":salt", $usuario["salt"]);
-                $sentencia->bindParam(":cod_confirm", $usuario["cod_confirm"]);
+                $sentencia->bindParam(":idUsuario", $usuario["idUsuario"]);
+                $sentencia->bindParam(":Nombre", $usuario["Nombre"]);
+                $sentencia->bindParam(":Email", $usuario["Email"]);
+                $sentencia->bindParam(":Password", $usuario["Password"]);
+                $sentencia->bindParam(":passConfirm", $usuario["passConfirm"]);
+                $sentencia->bindParam(":Salt", $usuario["Salt"]);
+                $sentencia->bindParam(":codConfirm", $usuario["codConfirm"]);
+                
 
                 //Ejecutamos la sentencia
                 $result = $sentencia->execute();
@@ -147,12 +149,12 @@ class Usuario
 
             try {
                 //Preparamos la sentencia
-                $sentencia = $conPDO->prepare("UPDATE biblioteca.usuarios set cod_activ=:cod_activ where idusuarios=:idusuarios");
+                $sentencia = $conPDO->prepare("UPDATE biblioteca.usuarios set codActiv=:codActiv where idUsuario=:idUsuario");
 
                 //Asociamos los valores a los parametros de la sentencia sql
 
-                $sentencia->bindParam(":idusuarios", $usuario["idusuarios"]);
-                $sentencia->bindParam(":cod_activ", $usuario["cod_activ"]);
+                $sentencia->bindParam(":idUsuario", $usuario["idUsuario"]);
+                $sentencia->bindParam(":codActiv", $usuario["codActiv"]);
 
                 //Ejecutamos la sentencia
                 $result = $sentencia->execute();
@@ -172,12 +174,12 @@ class Usuario
 
             try {
                 //Preparamos la sentencia
-                $sentencia = $conPDO->prepare("UPDATE biblioteca.usuarios set password=:password where idusuarios=:idusuarios");
+                $sentencia = $conPDO->prepare("UPDATE biblioteca.usuarios set Password=:Password where idUsuario=:idUsuario");
 
                 print($sentencia->queryString);
                 //Asociamos los valores a los parametros de la sentencia sql
-                $sentencia->bindParam(":idusuarios", $usuario["idusuarios"]);
-                $sentencia->bindParam(":password", $usuario["password"]);
+                $sentencia->bindParam(":idUsuario", $usuario["idUsuario"]);
+                $sentencia->bindParam(":Password", $usuario["Password"]);
                 
 
 

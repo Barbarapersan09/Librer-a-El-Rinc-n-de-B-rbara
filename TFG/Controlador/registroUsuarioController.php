@@ -16,32 +16,32 @@ require_once("../modelo/Utils.php");
  */
 
 //Si nos llegan datos de un cliente, implica que es el formulario el que llama al controlador
-if (isset($_POST["nombre"]) && isset($_POST["email"]) && isset($_POST["password"])) {
+if (isset($_POST["Nombre"]) && isset($_POST["Email"]) && isset($_POST["Password"])) {
     $usuario = array();
 
     //var_dump($_POST["nombre"]);
     //Limpiamos los datos de posibles caracteres o codigo malicioso
     //Segun los asignamos al array de datos del usuario a registrar
-    $usuario["nombre"] = Utils::limpiar_datos($_POST["nombre"]);
-    $usuario["email"] = Utils::limpiar_datos($_POST["email"]);
+    $usuario["Nombre"] = Utils::limpiar_datos($_POST["Nombre"]);
+    $usuario["Email"] = Utils::limpiar_datos($_POST["Email"]);
 
 
     //Generamos una salt de 16 posiciones
     $salt = Utils::generar_salt(16, true);
-    $usuario["salt"] = $salt;
+    $usuario["Salt"] = $salt;
 
 
     //Encriptamos el password del formulario con la funcion crypt
-    $passEncript = crypt($_POST["password"], '$5$rounds=5000$' . $salt . '$');
+    $passEncript = crypt($_POST["Password"], '$5$rounds=5000$' . $salt . '$');
     $passEncript = explode("$", $passEncript);
 
-    $usuario["password"] = $passEncript[4];
+    $usuario["Password"] = $passEncript[4];
 
     //Por defecto el usuario esta deshabilitado
-    $usuario["cod_activ"] = 0;
+    $usuario["codActiv"] = 0;
 
     //Generamos el codigo de activacion
-    $usuario["cod_confirm"] = Utils::generar_codigo_activacion();
+    $usuario["codConfirm"] = Utils::generar_codigo_activacion();
 
     // Creamos un objeto de usuario
     $gestorUsu = new Usuario();
@@ -59,8 +59,8 @@ if (isset($_POST["nombre"]) && isset($_POST["email"]) && isset($_POST["password"
         $mensaje = "Ha habido un fallo al acceder a la Base de Datos\n salte por la ventana ya!";
 
     // Incluimos el archivo de vistas codigoActivacion.php
-    include("../vistas/codigoActivacion.php");
+    include("../Vistas/codigoActivacion.php");
 } else {
     //Requiere el archivo de vistas registroUsuario.php
-    require_once("../vistas/registroUsuario.php");
+    require_once("../Vistas/registroUsuario.php");
 }

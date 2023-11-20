@@ -7,18 +7,18 @@ require_once("Utils.php");
 use \PDO;
 use \PDOException;
 
-class socios
+class cliente
 {
  
     /**Funcion que nos devuelve todos las temas */
-    public function getSocios($conexPDO)
+    public function getClientes($conexPDO)
     {
 
         if ($conexPDO != null) {
             try {
                 //Primero introducimos la sentencia a ejecutar con prepare
                 //Ponemos en lugar de valores directamente, interrogaciones
-                $sentencia = $conexPDO->prepare("SELECT * FROM biblioteca.socio");
+                $sentencia = $conexPDO->prepare("SELECT * FROM biblioteca.cliente");
                 //Ejecutamos la sentencia
                 $sentencia->execute();
 
@@ -34,7 +34,7 @@ class socios
     /**
      * Funcion que nos devuelve todos las socios con paginacion
      * */
-    public function getSociosPag($conexPDO, $ordAsc, string $campoOrd, int $numPag, int $cantElem)
+    public function getClientesPag($conexPDO, $ordAsc, string $campoOrd, int $numPag, int $cantElem)
     {
 
         if ($conexPDO != null) {
@@ -43,7 +43,7 @@ class socios
                 //Ponemos en lugar de valores directamente, interrogaciones
 
                 //Query inicial
-                $query = "SELECT * FROM biblioteca.socio ORDER BY ? ";
+                $query = "SELECT * FROM biblioteca.cliente ORDER BY ? ";
 
                 //si esta ordenada descentemente añadimos DESC
                 if (!$ordAsc) $query = $query . "DESC ";
@@ -88,7 +88,7 @@ class socios
                 try {
                     //Primero introducimos la sentencia a ejecutar con prepare
                     //Ponemos en lugar de valores directamente, interrogaciones
-                    $sentencia = $conexPDO->prepare("SELECT ceil(count(*)/?) as Paginas FROM biblioteca.socio;");
+                    $sentencia = $conexPDO->prepare("SELECT ceil(count(*)/?) as Paginas FROM biblioteca.cliente;");
                     //Asociamos a cada interrogacion el valor que queremos en su lugar
                     $sentencia->bindParam(1, $cantidad);
                     //Ejecutamos la sentencia
@@ -106,18 +106,18 @@ class socios
     /**
      * Devuelve la socio asociado a la clave primaria introducida
      */
-    public function getSocio($idSocio, $conexPDO)
+    public function getCliente($idCliente, $conexPDO)
     {
-        if (isset($idSocio) && is_numeric($idSocio)) {
+        if (isset($idCliente) && is_numeric($idCliente)) {
 
 
             if ($conexPDO != null) {
                 try {
                     //Primero introducimos la sentencia a ejecutar con prepare
                     //Ponemos en lugar de valores directamente, interrogaciones
-                    $sentencia = $conexPDO->prepare("SELECT * FROM biblioteca.socio where idSocio=?");
+                    $sentencia = $conexPDO->prepare("SELECT * FROM biblioteca.cliente where idCliente=?");
                     //Asociamos a cada interrogacion el valor que queremos en su lugar
-                    $sentencia->bindParam(1, $idSocio);
+                    $sentencia->bindParam(1, $idCliente);
                     //Ejecutamos la sentencia
                     $sentencia->execute();
 
@@ -130,24 +130,23 @@ class socios
         }
     }
 
-    function addSocio($socio, $conexPDO)
+    function addCliente($cliente, $conexPDO)
     {
 
         $result = null;
-        if (isset($socio) && $conexPDO != null) {
+        if (isset($cliente) && $conexPDO != null) {
 
             try {
                 //Preparamos la sentencia
-                $sentencia = $conexPDO->prepare("INSERT INTO biblioteca.socio (idSocio, Nombre, Apellidos, Dirección, DNI, Teléfono, Fecha_nacimiento) VALUES ( :idSocio, :Nombre, :Apellidos, :Dirección, :DNI, :Teléfono, :Fecha_nacimiento)");
+                $sentencia = $conexPDO->prepare("INSERT INTO biblioteca.cliente (idCliente, Nombre, Apellidos, Dirección, DNI, Teléfono) VALUES ( :idCliente, :Nombre, :Apellidos, :Dirección, :DNI, :Teléfono)");
 
                 //Asociamos los valores a los parametros de la sentencia sql
-                $sentencia->bindParam(":idSocio", $socio["idSocio"]);
-                $sentencia->bindParam(":Nombre", $socio["Nombre"]);
-                $sentencia->bindParam(":Apellidos", $socio["Apellidos"]);
-                $sentencia->bindParam(":Dirección", $socio["Dirección"]);
-                $sentencia->bindParam(":DNI", $socio["DNI"]);
-                $sentencia->bindParam(":Teléfono", $socio["Teléfono"]);
-                $sentencia->bindParam(":Fecha_nacimiento", $socio["Fecha_nacimiento"]);
+                $sentencia->bindParam(":idCliente", $cliente["idSocio"]);
+                $sentencia->bindParam(":Nombre", $cliente["Nombre"]);
+                $sentencia->bindParam(":Apellidos", $cliente["Apellidos"]);
+                $sentencia->bindParam(":Dirección", $cliente["Dirección"]);
+                $sentencia->bindParam(":DNI", $cliente["DNI"]);
+                $sentencia->bindParam(":Teléfono", $cliente["Teléfono"]);
                 
                 //Ejecutamos la sentencia
                 $result = $sentencia->execute();
@@ -159,20 +158,20 @@ class socios
         return $result;
     }
 
-    function delSocio($idSocio, $conexPDO)
+    function delCliente($idCliente, $conexPDO)
     {
         $result = null;
 
-        if (isset($idSocio) && is_numeric($idSocio)) {
+        if (isset($idCliente) && is_numeric($idCliente)) {
 
 
 
             if ($conexPDO != null) {
                 try {
                     //Borramos la editorial asociado a dicho id
-                    $sentencia = $conexPDO->prepare("DELETE  FROM biblioteca.socio where idSocio=?");
+                    $sentencia = $conexPDO->prepare("DELETE  FROM biblioteca.cliente where idCliente=?");
                     //Asociamos a cada interrogacion el valor que queremos en su lugar
-                    $sentencia->bindParam(1, $idSocio);
+                    $sentencia->bindParam(1, $idCliente);
                     //Ejecutamos la sentencia
                     $result = $sentencia->execute();
                 } catch (PDOException $e) {
@@ -184,24 +183,23 @@ class socios
         return $result;
     }
 
-    function updateSocio($socio, $conexPDO)
+    function updateCliente($cliente, $conexPDO)
     {
 
         $result = null;
-        if (isset($socio) && isset($socio["idSocio"]) && is_numeric($socio["idSocio"])  && $conexPDO != null) {
+        if (isset($cliente) && isset($cliente["idCliente"]) && is_numeric($cliente["idCliente"])  && $conexPDO != null) {
 
             try {
                 //Preparamos la sentencia
-                $sentencia = $conexPDO->prepare("UPDATE biblioteca.socio set idSocio=:idSocio, Nombre=:Nombre, Apellidos=:Apellidos, Dirección=:Dirección, DNI=:DNI, Teléfono=:Teléfono, Fecha_nacimiento=:Fecha_nacimiento where idSocio=:idSocio");
+                $sentencia = $conexPDO->prepare("UPDATE biblioteca.cliente set idCliente=:idCliente, Nombre=:Nombre, Apellidos=:Apellidos, Dirección=:Dirección, DNI=:DNI, Teléfono=:Teléfono where idCliente=:idCliente");
 
                 //Asociamos los valores a los parametros de la sentencia sql
-                $sentencia->bindParam(":idSocio", $socio["idSocio"]);
-                $sentencia->bindParam(":Nombre", $socio["Nombre"]);
-                $sentencia->bindParam(":Apellidos", $socio["Apellidos"]);
-                $sentencia->bindParam(":Dirección", $socio["Dirección"]);
-                $sentencia->bindParam(":DNI", $socio["DNI"]);
-                $sentencia->bindParam(":Teléfono", $socio["Teléfono"]);
-                $sentencia->bindParam(":Fecha_nacimiento", $socio["Fecha_nacimiento"]);
+                $sentencia->bindParam(":idCliente", $cliente["idCliente"]);
+                $sentencia->bindParam(":Nombre", $cliente["Nombre"]);
+                $sentencia->bindParam(":Apellidos", $cliente["Apellidos"]);
+                $sentencia->bindParam(":Dirección", $cliente["Dirección"]);
+                $sentencia->bindParam(":DNI", $cliente["DNI"]);
+                $sentencia->bindParam(":Teléfono", $cliente["Teléfono"]);
                 
                 //Ejecutamos la sentencia
                 $result = $sentencia->execute();

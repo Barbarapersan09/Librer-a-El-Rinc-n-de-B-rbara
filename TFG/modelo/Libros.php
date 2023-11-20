@@ -138,11 +138,12 @@ class libros
 
             try {
                 //Preparamos la sentencia
-                $sentencia = $conexPDO->prepare("INSERT INTO biblioteca.libros (idLibros, ISBN, Titulo, Tema, Paginas, Formato, Idioma,Fecha_publicacion, Precio, Descipcion, Editorial_idEditorial) VALUES (:idLibros, :ISBN, :Titulo, :Tema, :Paginas, :Formato, :Idioma,:Fecha_publicacion, :Precio, :Descripcion, :Editorial_idEditorial)");
+                $sentencia = $conexPDO->prepare("INSERT INTO biblioteca.libros (idLibros, ISBN, Imagen, Titulo, Tema, Paginas, Formato, Idioma,Fecha_publicacion, Precio, Descipcion, Editorial_idEditorial) VALUES (:idLibros, :ISBN, :Imagen, :Titulo, :Tema, :Paginas, :Formato, :Idioma,:Fecha_publicacion, :Precio, :Descripcion, :Editorial_idEditorial)");
 
                 //Asociamos los valores a los parametros de la sentencia sql
                 $sentencia->bindParam(":idLibros", $libro["idLibros"]);
                 $sentencia->bindParam(":ISBN", $libro["ISBN"], PDO::PARAM_INT);
+                $sentencia->bindParam(":Imagen", $libro["Imagen"]);
                 $sentencia->bindParam(":Titulo", $libro["Titulo"]);
                 $sentencia->bindParam(":Tema", $libro["Tema"]);
                 $sentencia->bindParam(":Paginas", $libro["Paginas"], PDO::PARAM_INT);
@@ -197,11 +198,12 @@ class libros
 
             try {
                 //Preparamos la sentencia
-                $sentencia = $conexPDO->prepare("UPDATE biblioteca.libros SET ISBN=:ISBN, Titulo=:Titulo, Tema=:Tema, Paginas=:Paginas, Formato=:Formato, Idioma=:Idioma, Fecha_publicacion=:Fecha_publicacion, Precio=:Precio, Descripcion=:Descripcion, Editorial_idEditorial=:Editorial_idEditorial,  WHERE idLibros=:idLibros");
+                $sentencia = $conexPDO->prepare("UPDATE biblioteca.libros SET ISBN=:ISBN, Imagen=:Imagen, Titulo=:Titulo, Tema=:Tema, Paginas=:Paginas, Formato=:Formato, Idioma=:Idioma, Fecha_publicacion=:Fecha_publicacion, Precio=:Precio, Descripcion=:Descripcion, Editorial_idEditorial=:Editorial_idEditorial,  WHERE idLibros=:idLibros");
 
          //Asociamos los valores a los parametros de la sentencia sql
                 $sentencia->bindParam(":idLibros", $libro["idLibros"]);
                 $sentencia->bindParam(":ISBN", $libro["ISBN"], PDO::PARAM_INT);
+                $sentencia->bindParam(":Imagen", $libro["Imagen"]);
                 $sentencia->bindParam(":Titulo", $libro["Titulo"]);
                 $sentencia->bindParam(":Tema", $libro["Tema"]);
                 $sentencia->bindParam(":Paginas", $libro["Paginas"], PDO::PARAM_INT);
@@ -224,34 +226,4 @@ class libros
         return $result;
     }
 }
-
-/* Pruebas que no deberían estar aqui
-$gestorCli = new Cliente();
-//Nos conectamos a la Bd
-$conexPDO = Utils::conectar();
-//$gestorCli->getCliente(1,$conexPDO);
-$resultado = $gestorCli->getClienteSel(18, "M", $conexPDO);
-$resultado2 = $gestorCli->getClientes($conexPDO, null, null, null, null);
-//var_dump($resultado2);
-print("El nombre de la segunda mujer es" . $resultado[1]["nombre"]);
-$alvaro = ["nombre" => "alvaro", "email" => "alvaro@gmail.com", "edad" => 24, "sexo" => "H"];
-//Probamos la insercion
-//var_dump($gestorCli->addCliente($alvaro, $conexPDO));
-//Modificamos la edad de alvaro
-$alvaro["edad"] = 13;
-$alvaro["idClientes"] = 13;
-//print("Resultado actualizacion: " . $gestorCli->updateCliente($alvaro, $conexPDO));
-//var_dump($gestorCli->delCliente(6,$conexPDO));
-$resultado2 = $gestorCli->getClientesPag($conexPDO, false, "sexo", 2, 5);
-var_dump($resultado2);
-$gestorCli = new Cliente();
-//Nos conectamos a la Bd
-$conexPDO = Utils::conectar();
-for ($i=0;$i<10;$i++)
-{
-$alvaro = ["nombre" => "alvaro$i", "email" => "alvaro$i@gmail.com", "edad" => random_int(1,120), "sexo" => (random_int(1,100)>50?"H":"M")];
-$gestorCli->addCliente($alvaro, $conexPDO);
-}
-*/
-
 ?>

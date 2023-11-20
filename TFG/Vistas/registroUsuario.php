@@ -37,20 +37,20 @@
 
           <!-- Nombre -->
           <div class="form-floating mb-3 mt-3">
-            <input type="text" class="form-control" id="nombre" name="nombre" value='' required/>
-            <label for="nombre" class="col-lg-3 col-form-label">Nombre</label>
+            <input type="text" class="form-control" id="Nombre" name="Nombre" value='' required/>
+            <label for="Nombre" class="col-lg-3 col-form-label">Nombre</label>
             <span id="error-nombre"></span>
           </div>
           <!-- Email -->
           <div class="form-floating mb-3 mt-3">
-            <input type="text" class="form-control" id="email" name="email" value='' required/>
-            <label for="email" class="col-lg-3 col-form-label">Email</label>
+            <input type="text" class="form-control" id="Email" name="Email" value='' required/>
+            <label for="Email" class="col-lg-3 col-form-label">Email</label>
             <span id="error-email"></span>
           </div>
           <!-- Password -->
           <div class="form-floating mb-3 mt-3">
-            <input type="password" class="form-control" id="password" name="password" value='' required/>
-            <label for="password" class="col-lg-3 col-form-label">Password</label>
+            <input type="password" class="form-control" id="Password" name="Password" value='' required/>
+            <label for="Password" class="col-lg-3 col-form-label">Password</label>
             <span id="error-password"></span>
           </div>
 
@@ -60,12 +60,12 @@
             <label for="passConfirm" class="col-lg-3 col-form-label">Confirmar Password</label>
             <span id="error-confirmPass"></span>
           </div>
-          <p>¿Ya tienes una cuenta? <a href="../vistas/LoginView.php">Inicia sesión aquí</a></p>
+          <p>¿Ya tienes una cuenta? <a href="../Vistas/LoginView.php">Inicia sesión aquí</a></p>
 
           <br>
          
           <?php
-          print("<form method='POST' action='../vistas/codigoActivacion.php'>");
+          print("<form method='POST' action='../Vistas/codigoActivacion.php'>");
           print("<button type='submit' name='registro' value='true' class='btn btn-default mb-sm-2 shadow p-3 mb-5 bg-body rounded px-3 py-2 '>Registrate</button>");
           print("</form>");
           ?>

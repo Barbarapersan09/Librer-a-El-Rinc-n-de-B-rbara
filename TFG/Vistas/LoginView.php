@@ -27,23 +27,23 @@ namespace vistas;
         <img class="mb-4" src="../assets/img/logoUser.svg" alt="" width="72" height="72">
 
         <div class="form-floating mb-3 mt-3">
-            <input type="text" class="form-control" id="email" name="email" value="" required>
-            <label for="email" class="col-lg-3 col-form-label">Email</label>
+            <input type="text" class="form-control" id="Email" name="Email" value="" required>
+            <label for="Email" class="col-lg-3 col-form-label">Email</label>
         </div>
 
         <div class="form-floating mt-3 mb-3">
-            <input type="password" class="form-control" id="pwd" name="pwd" value="" required>
-            <label for="pwd" class="col-lg-3 col-form-label">Contraseña</label>
+            <input type="password" class="form-control" id="Password" name="Password" value="" required>
+            <label for="Password" class="col-lg-3 col-form-label">Contraseña</label>
         </div>
         <div class="form-floating mt-3 mb-3">
-            <input type="password" class="form-control" id="pwdConfirm" name="pswdConfirm" value="" required>
-            <label for="pwdConfirm" class="col-lg-3 col-form-label">Corfirma la contraseña:</label>
+            <input type="password" class="form-control" id="passConfirm" name="passConfirm" value="" required>
+            <label for="passConfirm" class="col-lg-3 col-form-label">Corfirma la contraseña:</label>
         </div>
         <p>¿Olvidaste tu contraseña? <a href="../controlador/cambiarPasswordControlador.php">Restablecer contraseña</a></p>
 
         <div class="checkbox mb-3">
             <label>
-                <a href="../vistas/registroUsuario.php"> Registrarse </a>
+                <a href="../Vistas/registroUsuario.php"> Registrarse </a>
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">
